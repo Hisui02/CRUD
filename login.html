@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./css/login.css" />
+    <link rel="shortcut icon" href="./public/favicon.png" type="image/x-icon" />
+  </head>
+  <body>
+    <div id="root">
+      <main class="flex h-screen items-center justify-center">
+        <div
+          class="border text-card-foreground shadow-sm rounded-2xl border-none bg-background/50 p-4 backdrop-blur-lg backdrop-filter"
+        >
+          <div class="flex flex-col space-y-1.5 p-6">
+            <h3 class="text-2xl font-semibold leading-none tracking-tight">
+              Log In
+            </h3>
+          </div>
+          <div class="p-6 pt-0">
+            <form class="space-y-8">
+              <div class="space-y-2">
+                <label
+                  class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  for=":r1:-form-item"
+                  >Username</label
+                ><input
+                  class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                  placeholder="Your username"
+                  name="username"
+                  id=":r1:-form-item"
+                  aria-describedby=":r1:-form-item-description"
+                  aria-invalid="false"
+                  value=""
+                />
+              </div>
+              <div class="space-y-2">
+                <label
+                  class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  for=":r3:-form-item"
+                  >Password</label
+                ><input
+                  type="password"
+                  class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                  placeholder="********"
+                  name="password"
+                  id=":r3:-form-item"
+                  aria-describedby=":r3:-form-item-description"
+                  aria-invalid="false"
+                  value=""
+                />
+              </div>
+              <button
+                class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 rounded-xl"
+                type="submit"
+              >
+                Log In
+              </button>
+            </form>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
