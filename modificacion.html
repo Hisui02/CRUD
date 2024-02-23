@@ -122,17 +122,18 @@
                 <div class="flex gap-1 flex-col sm:flex-row justify-between">
                   <div class="flex gap-2 justify-between">
                     <label for="Hombre">Hombre</label>
-                    <input checked type="radio" name="sexo" value="Hombre" />
+                    <input checked onchange="resetear('sexo')" id="sexoHombre" type="radio" name="sexo" value="Hombre" />
                   </div>
                   <div class="flex gap-2 justify-between">
                     <label for="Mujer">Mujer</label>
-                    <input type="radio" name="sexo" value="Mujer" />
+                    <input onchange="resetear('sexo')" id="sexoMujer" type="radio" name="sexo" value="Mujer" />
                   </div>
                   <div class="flex gap-2 justify-between">
                     <label for="NoDecir">Prefiero no decirlo</label>
-                    <input type="radio" name="sexo" value="NoDecir" />
+                    <input onchange="resetear('sexo')" id="sexoNoDecir" type="radio" name="sexo" value="NoDecir" />
                   </div>
                 </div>
+                <span id="sexoHelp" class="invisible text-red-700 font-bold">Debes elegir un sexo</span>
               </div>
 
               <div class="space-y-1">

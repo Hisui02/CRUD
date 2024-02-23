@@ -11,6 +11,9 @@ function validacion() {
   let direccion = document.getElementById("direccion").value;
   let departamento = document.getElementById("departamento").value;
   let promocion = document.getElementById("promocion");
+  let sexoHombre = document.getElementById("sexoHombre");
+  let sexoMujer = document.getElementById("sexoMujer");
+  let sexoNoDecir = document.getElementById("sexoNoDecir");
 
 
   if (
@@ -76,7 +79,11 @@ function validacion() {
     correcto = false;
   }
 
-  // NO VALIDO EL SEXO, POR QUE PONGO OTRO POR DEFECTO
+  if (!sexoHombre.checked && !sexoMujer.checked && !sexoNoDecir.checked) {
+    document.getElementById("sexoHelp").style.visibility = "visible";
+
+    correcto = false;
+  }
 
   if (!promocion.checked) {
     document.getElementById("promocionHelp").style.color = "red";
