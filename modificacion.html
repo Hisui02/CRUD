@@ -3,10 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Edición</title>
+    <title>Modificación</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="./css/creacion-edicion.css" />
     <link rel="shortcut icon" href="./public/favicon.png" type="image/x-icon" />
+    <script src="./js/validacion.js"></script>
   </head>
   <body>
     <div id="root">
@@ -20,37 +21,42 @@
             </h3>
           </div>
           <div class="p-6 pt-0">
-            <form class="space-y-5">
+            <form
+              class="space-y-5"
+              action=""
+              method="post"
+              onsubmit="return validacion()"
+            >
               <div class="flex flex-col sm:flex-row gap-2">
                 <div>
                   <label
                     class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                    for=":r1:-form-item"
+                    for="nombre"
                     >Nombre</label
                   ><input
+                    onchange="resetear('nombre')"
                     class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                     placeholder="Tu nombre"
                     name="username"
-                    id=":r1:-form-item"
-                    aria-describedby=":r1:-form-item-description"
-                    aria-invalid="false"
+                    id="nombre"
                     value="Carlos"
                   />
+                  <span id="nombreHelp" class="invisible text-red-700 font-bold">Nombre no válido</span>
                 </div>
                 <div>
                   <label
                     class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                    for=":r1:-form-item"
+                    for="apellidos"
                     >Apellidos</label
                   ><input
+                    onchange="resetear('apellidos')"
                     class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                     placeholder="Tus apellidos"
                     name="apellidos"
-                    id=":r1:-form-item"
-                    aria-describedby=":r1:-form-item-description"
-                    aria-invalid="false"
-                    value="Pérez López"
+                    id="apellidos"
+                    value="Romero Gallardo"
                   />
+                  <span id="apellidosHelp" class="invisible text-red-700 font-bold">Apellidos no válidos</span>
                 </div>
               </div>
               <div class="flex flex-col sm:flex-row gap-2">
@@ -60,57 +66,63 @@
                     for=":r1:-form-item"
                     >Email</label
                   ><input
+                    onchange="resetear('email')"
                     class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                     placeholder="Tu email"
                     name="email"
-                    id=":r1:-form-item"
+                    id="email"
                     aria-describedby=":r1:-form-item-description"
                     aria-invalid="false"
-                    value="carperlop@gmail.com"
+                    value="carlitos@gmail.com"
                   />
+                  <span id="emailHelp" class="invisible text-red-700 font-bold">Email no válido</span>
                 </div>
                 <div class="space-y-1">
                   <label
                     class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                    for=":r1:-form-item"
+                    for="telefono"
                     >Teléfono</label
                   ><input
+                    onchange="resetear('telefono')"
                     class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                     placeholder="Tu teléfono"
                     name="tlfno"
-                    id=":r1:-form-item"
+                    id="telefono"
                     aria-describedby=":r1:-form-item-description"
                     aria-invalid="false"
-                    value="634546345"
+                    value="123456789"
                   />
+                  <span id="telefonoHelp" class="invisible text-red-700 font-bold">Teléfono no válido</span>
                 </div>
               </div>
               <div class="space-y-1">
                 <label
                   class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                  for=":r1:-form-item"
+                  for="direccion"
                   >Dirección</label
                 ><input
+                  onchange="resetear('direccion')"
                   class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                   placeholder="Tu dirección"
                   name="direccion"
-                  id=":r1:-form-item"
+                  id="direccion"
                   aria-describedby=":r1:-form-item-description"
                   aria-invalid="false"
-                  value="C/ Buenavista, 17"
+                  value="C/ Buenavista,14"
                 />
+                <span id="direccionHelp" class="invisible text-red-700 font-bold">Dirección no válida</span>
               </div>
               <div class="space-y-1">
                 <p
                   class="font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-center mb-4"
-                  for=":r1:-form-item"
+                  for="sexo"
                 >
                   Sexo
                 </p>
                 <div class="flex gap-1 flex-col sm:flex-row justify-between">
                   <div class="flex gap-2 justify-between">
                     <label for="Hombre">Hombre</label>
-                    <input type="radio" name="sexo" checked value="Hombre" />
+                    <input checked type="radio" name="sexo" value="Hombre" />
                   </div>
                   <div class="flex gap-2 justify-between">
                     <label for="Mujer">Mujer</label>
@@ -126,18 +138,39 @@
               <div class="space-y-1">
                 <label
                   class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                  for=":r1:-form-item"
+                  for="departamento"
                   >Departamento
                 </label>
-                <input
-                  class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                  placeholder="Tu departamento"
+                <select
+                  class="w-full bg-black rounded-md text-secondary p-2"
                   name="departamento"
-                  id=":r1:-form-item"
+                  id="departamento"
+                >
+                  <option value="ninguno">(elegir departamento)</option>
+                  <option value="ventas">Ventas</option>
+                  <option selected value="marketing">Marketing</option>
+                  <option value="administracion">Administración</option>
+                </select>
+              </div>
+
+              <div class="space-y-1 flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  checked
+                  class="h-4 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                  placeholder="Promocion"
+                  name="promocion"
+                  id="promocion"
                   aria-describedby=":r1:-form-item-description"
                   aria-invalid="false"
-                  value="Facturación"
+                  value=""
                 />
+                <label
+                  class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  for="promocion"
+                  id="promocionHelp"
+                  >Acepto recibir contenido promocional
+                </label>
               </div>
 
               <button

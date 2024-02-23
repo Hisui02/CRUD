@@ -7,9 +7,11 @@ function validacion() {
   let nombre = document.getElementById("nombre").value; // getter
   let apellidos = document.getElementById("apellidos").value; // getter
   let email = document.getElementById("email").value;
-  //   let pass = document.getElementById("pass").value;
-  //   let provincia = document.getElementById("provincia").value;
-  //   let terminos = document.getElementById("terminos").value;
+  let telefono = document.getElementById("telefono").value;
+  let direccion = document.getElementById("direccion").value;
+  let departamento = document.getElementById("departamento").value;
+  let promocion = document.getElementById("promocion");
+
 
   if (
     nombre == "" ||
@@ -18,20 +20,19 @@ function validacion() {
     !/[a-zñ]{2,}/.test(nombre)
   ) {
     document.getElementById("nombreHelp").style.visibility = "visible";
-    document.getElementById("nombre").style.color = "red";
-    // no debería volverse aquí el return false;
+    document.getElementById("nombre").style.borderColor = "red";
+
     correcto = false;
   }
 
   if (
     apellidos == "" ||
     /^\s+$/.test(apellidos) ||
-    /[0-9]/.test(apelllidos) ||
+    /[0-9]/.test(apellidos) ||
     !/[a-zñ]{2,}/.test(apellidos)
   ) {
     document.getElementById("apellidosHelp").style.visibility = "visible";
     document.getElementById("apellidos").style.borderColor = "red";
-    // no debería volverse aquí el return false;
 
     correcto = false;
   }
@@ -44,45 +45,47 @@ function validacion() {
   ) {
     document.getElementById("emailHelp").style.visibility = "visible";
     document.getElementById("email").style.borderColor = "red";
-    // no debería volverse aquí el return false;
 
     correcto = false;
   }
 
   if (
-    email == "" ||
-    !/[A-ZÑ]+/.test(pass) ||
-    !/[a-zñ]+/.test(pass) ||
-    !/[0-9]+/.test(pass) ||
-    !/[.,:;+-_&%$·"!?¿¡'=]/.test(pass) ||
-    (pass.length >= 8 && pass.length <= 15)
+    telefono === "" ||
+    !/^[0-9]{9}$/.test(telefono)
   ) {
-    document.getElementById("passHelp").style.visibility = "visible";
-    document.getElementById("pass").style.borderColor = "red";
-    // no debería volverse aquí el return false;
+    document.getElementById("telefonoHelp").style.visibility = "visible";
+    document.getElementById("telefono").style.borderColor = "red";
 
     correcto = false;
   }
 
-  if (provincia == 0) {
-    document.getElementById("provinciaHelp").style.visibility = "visible";
-    document.getElementById("provincia").style.borderColor = "red";
-    // no debería volverse aquí el return false;
+  if (
+    direccion === ""
+  ) {
+    document.getElementById("direccionHelp").style.visibility = "visible";
+    document.getElementById("direccion").style.borderColor = "red";
+
+    correcto = false;
+  }
+
+  if (
+    departamento == "ninguno"
+  ) {
+    document.getElementById("departamento").style.color = "red";
 
     correcto = false;
   }
 
   // NO VALIDO EL SEXO, POR QUE PONGO OTRO POR DEFECTO
 
-  if (!terminos.checked) {
-    document.getElementById("terminosHelp").style.visibility = "visible";
-    document.getElementById("terminos").style.borderColor = "red";
-    // no debería volverse aquí el return false;
+  if (!promocion.checked) {
+    document.getElementById("promocionHelp").style.color = "red";
 
     correcto = false;
   }
 
-  return false;
+  console.log(nombre)
+  return correcto;
 }
 
 function resetear(id) {
