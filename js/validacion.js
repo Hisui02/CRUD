@@ -15,7 +15,6 @@ function validacion() {
   let sexoMujer = document.getElementById("sexoMujer");
   let sexoNoDecir = document.getElementById("sexoNoDecir");
 
-
   if (
     nombre == "" ||
     /^\s+$/.test(nombre) ||
@@ -52,28 +51,21 @@ function validacion() {
     correcto = false;
   }
 
-  if (
-    telefono === "" ||
-    !/^[0-9]{9}$/.test(telefono)
-  ) {
+  if (telefono === "" || !/^[0-9]{9}$/.test(telefono)) {
     document.getElementById("telefonoHelp").style.visibility = "visible";
     document.getElementById("telefono").style.borderColor = "red";
 
     correcto = false;
   }
 
-  if (
-    direccion === ""
-  ) {
+  if (direccion === "") {
     document.getElementById("direccionHelp").style.visibility = "visible";
     document.getElementById("direccion").style.borderColor = "red";
 
     correcto = false;
   }
 
-  if (
-    departamento == "ninguno"
-  ) {
+  if (departamento == "ninguno") {
     document.getElementById("departamento").style.color = "red";
 
     correcto = false;
@@ -91,11 +83,20 @@ function validacion() {
     correcto = false;
   }
 
-  console.log(nombre)
   return correcto;
 }
 
 function resetear(id) {
   document.getElementById(id + "Help").style.visibility = "hidden";
   document.getElementById(id).style.borderColor = "lightgray";
+}
+
+function validarLogin() {
+  let correcto = true;
+  let username = document.getElementById("username").value; // getter
+  let password = document.getElementById("password").value; // getter
+
+  console.log(username, password);
+
+  return correcto;
 }

@@ -7,6 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="./css/login.css" />
     <link rel="shortcut icon" href="./public/favicon.png" type="image/x-icon" />
+    <script src="./js/validacion.js"></script>
   </head>
   <body>
     <div id="root">
@@ -20,17 +21,23 @@
             </h3>
           </div>
           <div class="p-6 pt-0">
-            <form class="space-y-8">
+            <form
+              class="space-y-8"
+              action=""
+              method="post"
+              onsubmit="return validarLogin()"
+            >
               <div class="space-y-2">
                 <label
                   class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                   for=":r1:-form-item"
                   >Username</label
                 ><input
+                  onchange="resetear('username')"
                   class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                   placeholder="Your username"
                   name="username"
-                  id=":r1:-form-item"
+                  id="username"
                   aria-describedby=":r1:-form-item-description"
                   aria-invalid="false"
                   value=""
@@ -42,11 +49,12 @@
                   for=":r3:-form-item"
                   >Password</label
                 ><input
+                  onchange="resetear('password')"
                   type="password"
                   class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                   placeholder="********"
                   name="password"
-                  id=":r3:-form-item"
+                  id="password"
                   aria-describedby=":r3:-form-item-description"
                   aria-invalid="false"
                   value=""
