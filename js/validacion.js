@@ -96,7 +96,28 @@ function validarLogin() {
   let username = document.getElementById("username").value; // getter
   let password = document.getElementById("password").value; // getter
 
-  console.log(username, password);
+  // console.log(username, password);
+
+  if (
+    username == "" ||
+    username.length <8 || username.length>12
+  ) {
+    document.getElementById("usernameHelp").style.visibility = "visible";
+    document.getElementById("username").style.borderColor = "red";
+
+    correcto = false;
+  }
+
+  if (
+    password == "" ||
+    password.length < 8 || password.length > 15
+    || !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/.test(password)
+  ) {
+    document.getElementById("passwordHelp").style.visibility = "visible";
+    document.getElementById("password").style.borderColor = "red";
+
+    correcto = false;
+  }
 
   return correcto;
 }
