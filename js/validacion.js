@@ -96,8 +96,6 @@ function validarLogin() {
   let username = document.getElementById("username").value; // getter
   let password = document.getElementById("password").value; // getter
 
-  // console.log(username, password);
-
   if (
     username == "" ||
     username.length <8 || username.length>12
@@ -115,9 +113,23 @@ function validarLogin() {
   ) {
     document.getElementById("passwordHelp").style.visibility = "visible";
     document.getElementById("password").style.borderColor = "red";
-
+    
     correcto = false;
   }
-
+  
   return correcto;
+}
+
+function resetCheck() {
+  if (promocion.checked) {
+    
+    document.getElementById("promocionHelp").style.color = "white";
+  }
+}
+
+function resetSelect() {
+  let departamento = document.getElementById("departamento").value;
+  if (departamento != "ninguno") {
+    document.getElementById("departamento").style.color = "white";
+  }
 }
